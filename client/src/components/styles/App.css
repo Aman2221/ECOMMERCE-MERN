@@ -1,0 +1,250 @@
+.HomeCarousel {
+  width: 100%;
+  margin-top: -10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fbe0c4;
+}
+.carouselImg {
+  background-color: #fbe0c4;
+}
+.carouselImg > img {
+  width: 100%;
+  object-fit: contain;
+  height: 350px;
+}
+
+#Carousel {
+  height: 100px;
+  width: 100%;
+}
+
+.fa-bolt {
+  color: #f7ea00;
+  margin-right: 5px;
+  margin-top: 1.8px;
+}
+
+.logo {
+  letter-spacing: 1px;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);
+  grid-column-gap: 100px;
+  padding: 20px;
+  padding-left: 50px;
+  position: relative;
+  top: -95px;
+  background-color: #fbe0c4;
+  cursor: pointer;
+}
+@media screen and (max-width: 468px) {
+  .products {
+    display: grid;
+    grid-template-columns: repeat(1, 100%);
+    grid-column-gap: 0px;
+    padding: 0px;
+    padding-left: 0px;
+    position: relative;
+    top: 5px;
+    background-color: #fbe0c4;
+    cursor: pointer;
+  }
+  .HomeCarousel {
+    display: none;
+  }
+  .emptyCartMessage > h1 {
+    font-size: 30px !important;
+  }
+}
+.cardBody > h1 {
+  color: #f44336 !important;
+}
+
+.login {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login_container {
+  padding: 30px;
+  margin-top: 50px;
+  width: 350px;
+  height: 430px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+}
+.login_container > h1 {
+  font-size: 28px;
+  font-weight: 500 !important;
+  letter-spacing: 1px;
+}
+.btnContainer > button {
+  margin-top: 40px;
+  cursor: pointer;
+}
+.btnContainer > p {
+  margin-top: 20px;
+  cursor: pointer;
+  color: aqua;
+}
+.btnContainer > p > span {
+  color: #f44336;
+}
+.inputFields {
+  display: flex;
+  align-items: center;
+}
+.inputFields > .fa-envelope,
+.fa-lock {
+  margin-right: 10px;
+  font-size: 18px;
+}
+.cart_count {
+  display: flex;
+  justify-content: center;
+  color: red;
+  background-color: #fff;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  align-items: center;
+}
+.nav {
+  cursor: pointer;
+}
+.errorMessage {
+  margin-top: 10px;
+  color: red;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.card_footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* cart  */
+.cart {
+  width: 100%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  cursor: pointer;
+}
+.cartItems {
+  display: flex;
+  margin-top: 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+.ProductImages > img {
+  width: 160px !important;
+  object-fit: contain;
+}
+
+.productDetails {
+  margin-left: 50px;
+  line-height: 40px;
+}
+
+.productDetails > h1 {
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+.productDetails > h3 {
+  font-size: 400;
+  font-size: 16px;
+}
+
+.emptyCartMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.emptyCartMessage > h1 {
+  font-size: 60px;
+  color: lightcoral;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* adminPanel */
+.adminPanel {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+}
+.admin_data ul {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  line-height: 50px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.admin_data ul li:nth-child(1) {
+  border: 1px solid lightgray;
+}
+.admin_data ul li:nth-child(2) {
+  border: 1px solid lightgray;
+  margin-left: -20px;
+}
+.admin_data ul li:nth-child(3) {
+  border: 1px solid lightgray;
+  margin-left: -20px;
+}
+.admin_data ul li {
+  padding: 10px;
+  padding-right: 10px !important;
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+}
+.table_head {
+  font-weight: 500 !important;
+  border-bottom: 1px solid #000;
+}
+.table_data {
+  font-size: 12.5px;
+}
+@media screen and (max-width: 468px) {
+  .admin_data {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+  }
+  .admin_data ul {
+    display: flex;
+    border: 1px solid;
+    gap: 10px;
+    width: 100%;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  .table_head {
+    font-size: 15px !important;
+  }
+  .table_data {
+    font-size: 12px;
+  }
+}
