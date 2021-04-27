@@ -11,6 +11,26 @@ const userSchema = new mongoose.Schema({
     }
 })
 
-const userModel = mongoose.model('data', userSchema);
+const userProductSchema = new mongoose.Schema({
+imgSrc:{
+    type : String,
+    require : true
+},
+price : {
+    type : String,
+    require : true
+},
+name : {
+    type : String,
+    require : true
+},
+description : {
+    type : String,
+    require : true
+}
+})
 
+const userModel = mongoose.model('data', userSchema);
+const userProductModel = mongoose.model('products', userProductSchema);
 module.exports = userModel;
+module.exports = userProductModel;

@@ -34,6 +34,7 @@
 .products {
   display: grid;
   grid-template-columns: repeat(3, 350px);
+  justify-content: center;
   grid-column-gap: 100px;
   padding: 20px;
   padding-left: 50px;
@@ -41,6 +42,10 @@
   top: -95px;
   background-color: #fbe0c4;
   cursor: pointer;
+}
+#cardImg {
+  padding: 20px;
+  height: 260px;
 }
 @media screen and (max-width: 468px) {
   .products {
@@ -53,6 +58,9 @@
     top: 5px;
     background-color: #fbe0c4;
     cursor: pointer;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
   }
   .HomeCarousel {
     display: none;
@@ -76,7 +84,7 @@
   padding: 30px;
   margin-top: 50px;
   width: 350px;
-  height: 430px;
+  height: 450px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
   display: flex;
   flex-direction: column;
@@ -85,6 +93,20 @@
   font-size: 28px;
   font-weight: 500 !important;
   letter-spacing: 1px;
+}
+.googleImg {
+  margin-top: 10px;
+  object-fit: contain;
+  border-radius: 50%;
+  width: 50px;
+  cursor: pointer;
+}
+.login_footer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .btnContainer > button {
   margin-top: 40px;
@@ -227,6 +249,9 @@
 }
 .table_data {
   font-size: 12.5px;
+}
+#displayNoneBTN {
+  display: none !important;
 }
 @media screen and (max-width: 468px) {
   .admin_data {

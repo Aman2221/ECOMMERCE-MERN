@@ -7,16 +7,11 @@ import Paragraph from "@material-tailwind/react/Paragraph";
 import Button from "@material-tailwind/react/Button";
 import './styles/App.css'
 import { useStateValue } from '../StateProviser'
-import Modal from "@material-tailwind/react/Modal";
-import ModalHeader from "@material-tailwind/react/ModalHeader";
-import ModalBody from "@material-tailwind/react/ModalBody";
-import ModalFooter from "@material-tailwind/react/ModalFooter";
-
+import ClosingAlert from "@material-tailwind/react/ClosingAlert";
 export default function Products({name, description, imgSrc, price}) {
     
-    const [showModal, setShowModal] = useState(false);
     const [{basket}, dispatch] = useStateValue();
-    const buttonRef = useRef();
+    const [validcart, setValidCart] = useState(false);
     const handleCart = (e) => {
         dispatch({
             type : 'ADD_ITEM',
@@ -27,10 +22,11 @@ export default function Products({name, description, imgSrc, price}) {
                 price
             }
         })
+        setValidCart(true);
     }
   return (
         <Card className='card'>
-            <CardImage className='CardImage'
+            <CardImage id='cardImg' className='CardImage'
                 src={imgSrc}
                 alt="Product Image"
             />
@@ -47,45 +43,23 @@ export default function Products({name, description, imgSrc, price}) {
                 <Button
                     color="red"
                     type="button"
-                    onClick={(e) => setShowModal(true)}
+                    onClick={handleCart}
                     ripple="light"
                 >
                     ADD TO CART
                 </Button>
                 <h4>{price}</h4>
             </div> 
-            <Modal size="sm" active={showModal} toggler={() => setShowModal(false)}>
-                <ModalHeader toggler={() => setShowModal(false)}>
-                    ADD TO CART
-                </ModalHeader>
-                <ModalBody>
-                <p className="text-base leading-relaxed text-gray-600 font-normal">
-                    Do you want to add this product to your cart ?
-                </p>
-                </ModalBody>
-                <ModalFooter>
-                <Button 
-                    color="red"
-                    buttonType="link"
-                    onClick={(e) => setShowModal(false)}
-                    ripple="dark"
-                >
-                    No
-                </Button>
-
-                <Button
-                    color="green"
-                    onClick={(e) => {   
-                        handleCart()
-                        setShowModal(false) 
-                    }}
-                    ripple="light"
-                >
-                    yes
-                </Button>
-                </ModalFooter>
-            </Modal>
             </CardFooter>
+            {
+                validcart ? (
+                    <ClosingAlert color="lightBlue">
+                        Product added to your cart
+                    </ClosingAlert>
+                ) : (
+                    <div></div>
+                )
+            }
             </Card>
   );
 }

@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import Input from "@material-tailwind/react/Input";
 import Button from "@material-tailwind/react/Button";
 import { useStateValue } from '../StateProviser'
+// import { provider, auth } from '../firebase'
+import google from '../img/google.png'
 
 const Login_SignUp = () => {
     const [{user}, dispatch] = useStateValue();
@@ -9,11 +11,22 @@ const Login_SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
+    const handleGlogin = () => {}
+    // const handleGlogin = () => {
+    //     auth.signInWithPopup(provider).then((result) => {
+    //             dispatch({
+    //                 type : 'SET_USER',
+    //                 user : result.user
+    //             })
+    //         }).catch((e) => {
+    //             console.log(e.message);
+    //         })  
+    // }
 
     const handleLogin = async (e) => {
         e.preventDefault();
         setError('');
-        const res = await fetch('/login', {
+        const res = await fetch('https://mern-app221.herokuapp.com/login', {
             method : 'POST',
             headers : {
                 "Content-Type" : "application/json"
@@ -24,8 +37,7 @@ const Login_SignUp = () => {
             })
         })
 
-        const data = await res.json();
-        if(res.status == 401){
+        if(res.status === 401 || email?.length < 0){
             setError('Invalid Credentials or (empty field) ❌')
         }
         else {
@@ -39,7 +51,7 @@ const Login_SignUp = () => {
     const handleSignup = async (e) => {
         e.preventDefault();
         setError('');
-        const res = await fetch('/signup', {
+        const res = await fetch(' https://mern-app221.herokuapp.com/signup', {
             method : 'POST',
             headers : {
                 "Content-Type" : "application/json"
@@ -128,7 +140,10 @@ const Login_SignUp = () => {
                         </>
                     )}
                 </div>
-                <p className='errorMessage'><small><b>{error}</b></small></p>
+                <div className="login_footer">
+                    <p className='errorMessage'><small><b>{error}</b></small></p>
+                    <img onClick={handleGlogin} className='googleImg' src={google} alt="Google"/>
+                </div>
                 </form>
            </div> 
         </div>

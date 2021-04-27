@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const userSchema = require('./Schema')
-
+const userProductModel = require('./Schema')
 router.get('/', (req,res) => {
     return res.send('Hello')
 })
@@ -52,6 +52,17 @@ router.get('/getData', (req, res) => {
         }
         else{
             res.status(200).send(data);
+        }
+    })
+})
+
+router.get('/getProductData',(req,res) => {
+    userProductModel.find((err, data) => {
+        if(err){
+            res.status(401).send(err)
+        }
+        else{
+            res.status(201).send(data);
         }
     })
 })

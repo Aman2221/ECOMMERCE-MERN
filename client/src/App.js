@@ -4,26 +4,27 @@ import NavBar from './components/Nav';
 import HomeCarousel from './components/HomeCarousel';
 import Products from './components/Products';
 import { useState, useEffect } from 'react'
-import { db } from './firebase'
+// import { db } from './firebase'
 import { useStateValue } from './StateProviser'
 import Login_SignUp from './components/Login_SignUp';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Admin from './components/Admin';
 import Cart from './components/Cart';
+import axios from "axios";
 
 function App() {
 
   const [{user}, dispatch] = useStateValue();
   const [products, setProducts] = useState([]);
+  const fetchProducts = async() => {
+      const res = await axios.get('http://localhost:5000/getProductData').then((response) => {
+          setProducts(response.data);
+      }).catch((e) => console.log(e));
+  }
   useEffect(() => {
-    db.collection('products').onSnapshot(snapshot => {
-      setProducts(snapshot.docs.map(doc => ({
-        id : doc.id,
-        item : doc.data(),
-      })));
-    })
+      fetchProducts();
+      console.log('products : ',products);
   }, [])
-  console.log(products);
   return (
     <>
         <div className="App">
@@ -39,16 +40,16 @@ function App() {
                       <HomeCarousel />
                       <div className="products">
                         {
-                          products.map(({item, id}) => (
+                          products.map((item) => (
                             <Products 
-                              key = {id}
                               name = {item.name}
-                              description =  {item.description}
+                              description = {item.description}
                               imgSrc = {item.imgSrc}
                               price = {item.price}
                             />
                           ))
                         }
+                      
                       </div>
                     </Route>
                     <Route exact path='/admin'>

@@ -4,13 +4,13 @@ const Admin_Panel = () => {
 
     const [data, setData] = useState([]);
     const handleData = async (e) => {
-        const res = await axios.get('http://localhost:5000/getData').then((response) => {
+        const res = await axios.get('https://mern-app221.herokuapp.com/getData').then((response) => {
             setData(response.data)
         }).catch((e) => {
-            console.log(e);
+            console.log('error',e);
         })
-        console.log(data);
-        console.log(res);
+        console.log('data :',data);
+        console.log('res :',res);
     }
 
     useEffect(() => {

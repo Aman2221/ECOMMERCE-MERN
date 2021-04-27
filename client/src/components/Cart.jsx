@@ -13,6 +13,7 @@ import Popover from "@material-tailwind/react/Popover";
 import PopoverContainer from "@material-tailwind/react/PopoverContainer";
 import PopoverHeader from "@material-tailwind/react/PopoverHeader";
 import PopoverBody from "@material-tailwind/react/PopoverBody";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const Cart = () => {
 
@@ -21,11 +22,11 @@ const Cart = () => {
     const [CardNumber, setCardNumber] = useState();
     const [error, setError] = useState('');
     const handleError = () => {
-        if(CardNumber.length > 16){
+        if(CardNumber?.length === 16){
             setError('✔️')
         }
-        else{
-            setError(`Invalid Card Number ${CardNumber}`)
+        if(CardNumber?.length >= 16){
+            setError(`Invalid Card Number`)
         }
     }
     const handleBuy = () => {
@@ -97,7 +98,11 @@ const Cart = () => {
                                     placeholder="16 digit card number"
                                     error={error}
                                     onChange={handleError}
-                                    onChange={(e) => setCardNumber(e.target.value)}
+                                    onChange={(e) => {
+                                        setCardNumber(e.target.value);
+                                        handleError()
+                                    }
+                                    }
                                 /><br/>
                             <p className="text-base leading-relaxed text-gray-600 font-normal">
                                 This product will be delivered to you in <br/> 3-4 business days 🙂
@@ -118,22 +123,29 @@ const Cart = () => {
                                 onClick={(e) => {   
                                     handleBuy()
                                 }}
-                            >
-                                
+                                id='displayNoneBTN'
+                            >  
                             </Button>
-                             <Button color="green" ref={buttonRef} ripple="light" onClick={handleError}>
-                                    Confirm
-                                </Button>
-
+                            {
+                                    CardNumber?.length === 16 ? (
+                                        <PayPalScriptProvider options={{ "client-id": "test" }}>
+                                            <PayPalButtons style={{ layout: "horizontal" }} />
+                                        </PayPalScriptProvider>
+                                    ) : (
+                                        <Button color="green" ref={buttonRef} ripple="light" onClick={handleError}>
+                                                Confirm
+                                        </Button>   
+                                    )
+                            }
                                 <Popover placement="right" ref={buttonRef}>
                                     <PopoverContainer>
-                                    <PopoverHeader >Invalid ❌</PopoverHeader>
-                                    <PopoverBody>
-                                        <p className="text-base leading-relaxed text-gray-600 font-normal">
-                                            Please fill all fields properly or  {error}
-                                        </p>
-                                    </PopoverBody>
-                                    </PopoverContainer>
+                                        <PopoverHeader >Invalid ❌</PopoverHeader>
+                                        <PopoverBody>
+                                            <p className="text-base leading-relaxed text-gray-600 font-normal">
+                                                Please fill all fields properly or  {error}
+                                            </p>
+                                        </PopoverBody>
+                                    </PopoverContainer>   
                                 </Popover>
                             </ModalFooter>
                         </Modal>
