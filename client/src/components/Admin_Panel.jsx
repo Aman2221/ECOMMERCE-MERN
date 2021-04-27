@@ -9,8 +9,6 @@ const Admin_Panel = () => {
         }).catch((e) => {
             console.log('error',e);
         })
-        console.log('data :',data);
-        console.log('res :',res);
     }
 
     useEffect(() => {

@@ -8,6 +8,8 @@ import Button from "@material-tailwind/react/Button";
 import './styles/App.css'
 import { useStateValue } from '../StateProviser'
 import ClosingAlert from "@material-tailwind/react/ClosingAlert";
+
+
 export default function Products({name, description, imgSrc, price}) {
     
     const [{basket}, dispatch] = useStateValue();
@@ -24,6 +26,7 @@ export default function Products({name, description, imgSrc, price}) {
         })
         setValidCart(true);
     }
+
   return (
         <Card className='card'>
             <CardImage id='cardImg' className='CardImage'

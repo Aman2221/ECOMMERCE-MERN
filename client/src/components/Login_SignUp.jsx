@@ -2,7 +2,7 @@ import React, { useState , useEffect} from 'react'
 import Input from "@material-tailwind/react/Input";
 import Button from "@material-tailwind/react/Button";
 import { useStateValue } from '../StateProviser'
-// import { provider, auth } from '../firebase'
+import { provider, auth } from '../firebase'
 import google from '../img/google.png'
 
 const Login_SignUp = () => {
@@ -11,17 +11,17 @@ const Login_SignUp = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [error, setError] = useState();
-    const handleGlogin = () => {}
-    // const handleGlogin = () => {
-    //     auth.signInWithPopup(provider).then((result) => {
-    //             dispatch({
-    //                 type : 'SET_USER',
-    //                 user : result.user
-    //             })
-    //         }).catch((e) => {
-    //             console.log(e.message);
-    //         })  
-    // }
+
+    const handleGlogin = () => {
+        auth.signInWithPopup(provider).then((result) => {
+                dispatch({
+                    type : 'SET_USER',
+                    user : result.user
+                })
+            }).catch((e) => {
+                console.log(e.message);
+            })  
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -37,7 +37,7 @@ const Login_SignUp = () => {
             })
         })
 
-        if(res.status === 401 || email?.length < 0){
+        if(res.status === 401){
             setError('Invalid Credentials or (empty field) ❌')
         }
         else {

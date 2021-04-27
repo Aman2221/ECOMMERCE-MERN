@@ -120,6 +120,12 @@
 .btnContainer > p > span {
   color: #f44336;
 }
+.footer_div {
+  position: relative;
+  top: -90px;
+  background-color: #fbe0c4;
+  height: 200px;
+}
 .inputFields {
   display: flex;
   align-items: center;
@@ -271,5 +277,103 @@
   }
   .table_data {
     font-size: 12px;
+  }
+}
+.social-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between !important;
+  align-items: center;
+  flex: 1;
+}
+.social-links a {
+  margin: 5px 0;
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 2px rgba(248, 245, 245, 0.5);
+  text-decoration: none;
+  color: #fff;
+}
+.social-links a i {
+  font-size: 20px;
+}
+.social-links a:hover {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.7s;
+  transform: translateY(-10px);
+}
+.social-links a:nth-child(1) {
+  background: linear-gradient(0deg, #000000, #252525);
+}
+.social-links a:nth-child(2) {
+  background: linear-gradient(0deg, #0e9cf5, #41d6ff);
+}
+.social-links a:nth-child(3) {
+  background: linear-gradient(0deg, #3c5a99, #577ac7);
+}
+.social-links a:nth-child(4) {
+  background: linear-gradient(45deg, #405de6, #833ab4, #fd1d1d);
+}
+.social-links a:nth-child(5) {
+  background: linear-gradient(0deg, #006192, #019deb);
+}
+.container_footer {
+  display: flex;
+  padding-left: 50px;
+}
+.row {
+  display: flex;
+  padding-top: 40px;
+  padding-left: 50px;
+}
+.connect_div {
+  padding-left: 50px;
+}
+.footer_about {
+  position: relative;
+  top: 10px;
+}
+@media screen and (max-width: 480px) {
+  .products_div {
+    display: flex;
+    flex-direction: column;
+  }
+  .container_footer {
+    padding-left: 10px;
+    flex-direction: column;
+  }
+  .row {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+    flex-direction: column;
+  }
+  .connect_div {
+    padding-top: 20px;
+    padding-left: 0px;
+  }
+  .social-links a {
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 2px rgba(248, 245, 245, 0.5);
+    text-decoration: none;
+    color: #fff;
+  }
+  .footer_div {
+    position: relative;
+    top: -30px;
+    background-color: #fbe0c4;
+    height: 200px;
   }
 }

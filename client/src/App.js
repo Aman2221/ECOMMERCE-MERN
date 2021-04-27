@@ -3,28 +3,18 @@ import "@material-tailwind/react/tailwind.css";
 import NavBar from './components/Nav';
 import HomeCarousel from './components/HomeCarousel';
 import Products from './components/Products';
-import { useState, useEffect } from 'react'
-// import { db } from './firebase'
 import { useStateValue } from './StateProviser'
 import Login_SignUp from './components/Login_SignUp';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import Admin from './components/Admin';
 import Cart from './components/Cart';
-import axios from "axios";
+import { ProductsData } from './components/ProductData'
+import AppFooter from './components/AppFooter';
 
 function App() {
 
   const [{user}, dispatch] = useStateValue();
-  const [products, setProducts] = useState([]);
-  const fetchProducts = async() => {
-      const res = await axios.get('http://localhost:5000/getProductData').then((response) => {
-          setProducts(response.data);
-      }).catch((e) => console.log(e));
-  }
-  useEffect(() => {
-      fetchProducts();
-      console.log('products : ',products);
-  }, [])
+
   return (
     <>
         <div className="App">
@@ -40,7 +30,7 @@ function App() {
                       <HomeCarousel />
                       <div className="products">
                         {
-                          products.map((item) => (
+                          ProductsData.map((item) => (
                             <Products 
                               name = {item.name}
                               description = {item.description}
@@ -49,11 +39,12 @@ function App() {
                             />
                           ))
                         }
-                      
+                        
                       </div>
+                     <AppFooter />
                     </Route>
                     <Route exact path='/admin'>
-                        <NavBar />
+                      <NavBar />
                       <Admin />
                     </Route>
                     <Route exact path='/cart'>
