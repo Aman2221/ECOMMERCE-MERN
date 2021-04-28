@@ -1,2 +1,2 @@
 # ECOMMERCE-MERN
-This is an full stack ecommerce website built using MERN + Material Tailwind
+## This is a full-stack eCommerce website built using MERN + Material Tailwind
