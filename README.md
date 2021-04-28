@@ -1,4 +1,5 @@
-# ECOMMERCE-MERN
+# The frontend is deployed on Netlify and the backend is deployed on Heroku 
+
 ## This is a full-stack eCommerce website built using MERN + Material Tailwind
 ### 1. Log in Page : User Login using MERN or user can login with Google
 <img src="https://github.com/Aman2221/ECOMMERCE-MERN/blob/main/img/login.png" alt="preview" /> <br />
