@@ -1,6 +1,6 @@
 # ECOMMERCE-MERN
 ## This is a full-stack eCommerce website built using MERN + Material Tailwind
-### 1. Log in Page : User Login using MERN
+### 1. Log in Page : User Login using MERN or user can login with Google
 <img src="https://github.com/Aman2221/ECOMMERCE-MERN/blob/main/img/login.png" alt="preview" /> <br />
 
 ### 2. Sign Up Page : User SignUp using MERN
@@ -18,7 +18,7 @@
 ### 6. Admin Panel Page : List of users registered
 <img src="https://github.com/Aman2221/ECOMMERCE-MERN/blob/main/img/AdminPanel.png" alt="preview" />
 
-### 7. Payemt Page : It will only show payPal button only if the card number us valid 
+### 7. Payemt Page : It will only show payPal button only if the card number is valid 
 <img src="https://github.com/Aman2221/ECOMMERCE-MERN/blob/main/img/Payment.png" alt="preview" /> <br />
 
 ### 8. Paypal payment Page
